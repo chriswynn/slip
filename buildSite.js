@@ -10,7 +10,11 @@ const distPath = "./public";
 
 const buildPage = (file, { srcPath, distPath }) => {
   const fileData = path.parse(file);
-  const destPath = path.join(distPath, fileData.dir);
+  let destPath = path.join(distPath, fileData.dir);
+
+  if (fileData.name != "index") {
+    dest = path.join(destPath, fileData.name);
+  }
 
   const dataFileRaw = fs.readFileSync(`${srcPath}/data/${fileData.name}.json`);
   const dataFileParsed = JSON.parse(dataFileRaw);
@@ -23,7 +27,7 @@ const buildPage = (file, { srcPath, distPath }) => {
     Object.assign({}, { body: data }, dataFileParsed)
   );
 
-  fs.writeFile(`${distPath}/${fileData.name}.html`, pageContent);
+  fs.writeFile(`${distPath}/index.html`, pageContent);
 };
 
 const build = () => {
@@ -33,6 +37,8 @@ const build = () => {
     buildPage(file, { srcPath, distPath });
   });
 };
+
+build();
 
 chokidar.watch(srcPath).on("change", path => {
   console.log(`Change in ${path} reloading...`);
