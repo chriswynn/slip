@@ -11,14 +11,16 @@ const distPath = "./public";
 const buildPage = (file, { srcPath, distPath }) => {
   const fileData = path.parse(file);
   const destPath = path.join(distPath, fileData.dir);
-  const dataFile = require(`${srcPath}/data/${fileData.name}.json`);
+
+  const dataFileRaw = fs.readFileSync(`${srcPath}/data/${fileData.name}.json`);
+  const dataFileParsed = JSON.parse(dataFileRaw);
 
   fs.mkdirsSync(destPath);
 
   const data = fs.readFileSync(`${srcPath}/views/${file}`, "utf-8");
   const pageContent = nunjucks.renderString(
     data,
-    Object.assign({}, { body: data }, dataFile)
+    Object.assign({}, { body: data }, dataFileParsed)
   );
 
   fs.writeFile(`${distPath}/${fileData.name}.html`, pageContent);
