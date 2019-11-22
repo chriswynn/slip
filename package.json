@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all build:site",
-    "build:site": "node buildSite"
+    "start": "npm-run-all build:site-watch",
+    "build": "npm-run-all build:site",
+    "build:site-watch": "node cli -w",
+    "build:site": "node cli -b"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +15,7 @@
   "dependencies": {},
   "devDependencies": {
     "chokidar": "^3.3.0",
+    "commander": "^4.0.1",
     "fs-extra": "^8.1.0",
     "glob": "^7.1.6",
     "live-server": "^1.2.1",
