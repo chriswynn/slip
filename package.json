@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all --parallel build:site-watch build:js-watch",
+    "start": "npm-run-all --parallel watch:views watch:js",
     "build": "npm-run-all --parallel build:views build:js",
     "watch:views": "node cli -w",
     "build:views": "node cli -b",
-    "watch:js": "rollup ./src/js/index.js --file ./public/bundle.js --format iife --watch",
-    "build:js": "rollup ./src/js/index.js --file ./public/bundle.js --format iife"
+    "watch:js": "rollup -c -w",
+    "build:js": "rollup -c"
   },
   "keywords": [],
   "author": "",
