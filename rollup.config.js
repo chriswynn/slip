@@ -1,4 +1,5 @@
 import postcss from "rollup-plugin-postcss";
+import easyImport from "postcss-easy-import";
 
 export default {
   input: "src/js/index.js",
@@ -9,7 +10,7 @@ export default {
   plugins: [
     postcss({
       modules: true,
-      plugins: []
+      plugins: [easyImport()]
     })
   ]
 };
