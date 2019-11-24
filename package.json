@@ -4,15 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm-run-all build:site-watch",
-    "build": "npm-run-all build:site",
-    "build:site-watch": "node cli -w",
-    "build:site": "node cli -b"
+    "start": "npm-run-all --parallel build:site-watch build:js-watch",
+    "build": "npm-run-all --parallel build:views build:js",
+    "watch:views": "node cli -w",
+    "build:views": "node cli -b",
+    "watch:js": "rollup ./src/js/index.js --file ./public/bundle.js --format iife --watch",
+    "build:js": "rollup ./src/js/index.js --file ./public/bundle.js --format iife"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "rollup": "^1.27.4"
+  },
   "devDependencies": {
     "chokidar": "^3.3.0",
     "commander": "^4.0.1",
