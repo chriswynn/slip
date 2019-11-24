@@ -14,9 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "rollup": "^1.27.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "chokidar": "^3.3.0",
     "commander": "^4.0.1",
@@ -24,6 +22,8 @@
     "glob": "^7.1.6",
     "live-server": "^1.2.1",
     "npm-run-all": "^4.1.5",
-    "nunjucks": "^3.2.0"
+    "nunjucks": "^3.2.0",
+    "rollup": "^1.27.4",
+    "rollup-plugin-postcss": "^2.0.3"
   }
 }
