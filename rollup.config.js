@@ -9,7 +9,6 @@ export default {
   },
   plugins: [
     postcss({
-      modules: true,
       plugins: [easyImport()]
     })
   ]
