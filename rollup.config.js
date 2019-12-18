@@ -1,5 +1,6 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
+import { uglify } from "rollup-plugin-uglify";
 import postcss from "rollup-plugin-postcss";
 import easyImport from "postcss-easy-import";
 
@@ -14,6 +15,7 @@ export default {
       plugins: [easyImport()]
     }),
     commonjs(),
-    resolve()
+    resolve(),
+    uglify()
   ]
 };
